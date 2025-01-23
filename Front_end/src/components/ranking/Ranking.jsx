@@ -1,6 +1,6 @@
 import './Ranking.css'
 import axios from "axios";
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../head/Header'
 import Sidebar from '../sidebar/Sidebar'
 import Modal_rank from './Modal/Modal-rank';
@@ -14,9 +14,8 @@ const Ranking = () => {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get(`${URL}/home`);
-      //console.log(response.data)
-      setUsers(response.data);
+      const response = await axios.get(`${URL}/user/`);
+      setUsers(response);
     } catch (error) {
       console.error(error.message);
     }
@@ -28,10 +27,9 @@ const Ranking = () => {
 
   const [owner, setOwner] = useState({});
   useEffect(() => {
-   axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
+   axios.get(`${URL}/user/${auth1._id}`) 
    .then(result => {
-           setOwner(result.data)
-           console.log(owner.stats)
+           setOwner(result)
    })
    .catch(err => console.log(err))
  },[])
@@ -47,7 +45,7 @@ const Ranking = () => {
   statsMap.forEach(obj => {
     let objSum = 0
     for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
         objSum += obj[key]
       }
     }
@@ -76,9 +74,9 @@ const Ranking = () => {
           <h1>Hello {owner.truename}, here is your total stats!</h1>
         </div>
         {rankedArr.map(user =>(
-          user.user_id == owner.user_id 
+          user._id == owner._id 
           ?
-          <div className="rank">
+          <div className="rank" key={user._id}>
             <div className="rank-number">
               <h1>{user.rank}</h1>
             </div>
@@ -103,7 +101,7 @@ const Ranking = () => {
           </div>
           {rankedArr.map(user =>(
 
-          <div className="leader">
+          <div className="leader" key={user._id}>
             <div className="rank-no">
               <h1>{user.rank}</h1>
             </div>
@@ -122,7 +120,7 @@ const Ranking = () => {
               <h3>{user.stats.organizational_skill + user.stats.techical_skill + user.stats.idea_contribution + user.stats.communication_skill + user.stats.product_optimization}</h3>
             </div>
             <div className="view-employee">
-              <Modal_rank user_id= {user.user_id} organizational_skill= {user.stats.organizational_skill}  techical_skill= {user.stats.techical_skill} idea_contribution= {user.stats.idea_contribution} communication_skill= {user.stats.communication_skill} product_optimization= {user.stats.product_optimization}/>
+              <Modal_rank _id= {user._id} organizational_skill= {user.stats.organizational_skill}  techical_skill= {user.stats.techical_skill} idea_contribution= {user.stats.idea_contribution} communication_skill= {user.stats.communication_skill} product_optimization= {user.stats.product_optimization}/>
             </div>
           </div>
           ))

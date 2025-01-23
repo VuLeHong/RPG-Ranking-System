@@ -19,7 +19,6 @@ const Projectschema = new mongoose.Schema({
         {
             task_id:{
                 type:mongoose.Schema.Types.ObjectId,
-                required:true
             }, 
         }
     ],

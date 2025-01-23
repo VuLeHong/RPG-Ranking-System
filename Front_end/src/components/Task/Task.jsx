@@ -1,5 +1,5 @@
-import { BsChat, BsFillFolderFill, BsFillSendFill } from 'react-icons/bs'
-import React, { useEffect, useState } from 'react'
+import { BsChat } from 'react-icons/bs'
+import { useEffect, useState } from 'react'
 import './Task.css'
 import Header from '../head/Header'
 import Sidebar from '../sidebar/Sidebar'
@@ -35,17 +35,15 @@ function Task() {
     const auth = localStorage.getItem("user");
     const auth1 = JSON.parse(auth);
     useEffect(() => {
-      axios.get(`${URL}/gettasks`) 
+      axios.get(`${URL}/task/`) 
       .then(result => {
-        //console.log(result.data)
-        setTasks(result.data)
-        console.log(tasks)
-        
+        setTasks(result)        
       })
       .catch(err => console.log(err))
     }, [])
+
     const handleCmt = (task_id,cmt) => {
-       axios.post(`${URL}/addcmt`, {task_id: task_id, t_desc: cmt})
+       axios.post(`${URL}/task/${task_id}`, {t_desc: cmt})
        .then( result=> {
          if(result){
            location.reload()
@@ -54,7 +52,7 @@ function Task() {
        .catch(err => console.log(err))
   }
   const handleAns = (task_id,ans) => {
-    axios.post(`${URL}/result`, {task_id: task_id, ans: ans})
+    axios.post(`${URL}/task/${task_id}`, {ans: ans})
     .then( result=> {
       if(result){
         location.reload()
@@ -64,13 +62,12 @@ function Task() {
 }
   const [owner, setOwner] = useState({});
   useEffect(() => {
-   axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
-   .then(result => {
-           setOwner(result.data)
-           //console.log(owner.tasks)
-   })
-   .catch(err => console.log(err))
- },[])
+    axios.get(`${URL}/user/${auth1._id}`) 
+    .then(result => {
+         setOwner(result)
+    })
+    .catch(err => console.log(err))
+  },[])
   return (
     <div className='grid-container'>
       <Header />

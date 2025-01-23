@@ -8,12 +8,10 @@ const Taskschema = new mongoose.Schema({
     }, 
     rank:{
         type: String,
-        required:true,
         default: 'E'
     },
     isdone:{
         type: Boolean,
-        required: true,
         default: false
     },
     t_desc:{

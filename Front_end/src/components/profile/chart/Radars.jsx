@@ -1,6 +1,4 @@
-
-
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
 	Chart as ChartJs,
 	RadialLinearScale,
@@ -24,19 +22,17 @@ ChartJs.register(
 
 const Radars = () => {
 	const auth = localStorage.getItem("user");
-  	const auth1 = JSON.parse(auth);
+	const auth1 = JSON.parse(auth);
 	const [owner, setOwner] = useState({});
-   	useEffect(() => {
-    axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
+	useEffect(() => {
+    axios.get(`${URL}/user/${auth1._id}`) 
     .then(result => {
-            setOwner(result.data)
-            // console.log(owner.stats)
-			console.log(result.data.stats)
+        setOwner(result)
     })
     .catch(err => console.log(err))
-  	},[])
+	},[])
 
-  	const data = {
+	const data = {
 		labels: [`Organizational Skill:${owner.stats === undefined ? auth1.stats.organizational_skill : owner.stats.organizational_skill}`, 
 		`Technical Skill: ${owner.stats === undefined ? auth1.stats.techical_skill : owner.stats.techical_skill}`, 
 		`Idea Contribution: ${owner.stats === undefined ? auth1.stats.idea_contribution : owner.stats.idea_contribution}`, 
@@ -90,7 +86,7 @@ const Radars = () => {
 
 
     return (
-    	<Radar options={options} height={300} width={400} data={data} />
+		<Radar options={options} height={300} width={400} data={data} />
     )
 }
 

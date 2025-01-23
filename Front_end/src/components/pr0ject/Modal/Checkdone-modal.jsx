@@ -1,7 +1,6 @@
 
-import React, { useEffect, useState } from 'react' 
+import  { useState } from 'react' 
 import "./Checkdone-modal.css";
-import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md"
 import axios from 'axios'
 const URL = 'https://rpg-ranking-system.onrender.com';
 const Checkdone_modal = (data) => {
@@ -15,10 +14,6 @@ const Checkdone_modal = (data) => {
     setModal(!modal);
   };
 
-  const [check, setCheck] = useState(false)
-  const toggleCheck = () => {
-    setCheck(!check)
-  }
 
   const wrong_submit = () => {
     alert("You input wrong points")
@@ -30,28 +25,28 @@ const Checkdone_modal = (data) => {
     document.body.classList.remove('active-modal')
   }
 
-  const [owner, setOwner] = useState({});
-  useEffect(() => {
-   axios.post(`${URL}/get`, {user_id: data.user_id}) 
-   .then(result => {
-           setOwner(result.data)
-   })
-   .catch(err => console.log(err))
- },[])
+//   const [owner, setOwner] = useState({});
+//   useEffect(() => {
+//    axios.get(`${URL}/user/${data.user_id}`) 
+//    .then(result => {
+//         setOwner(result)
+//    })
+//    .catch(err => console.log(err))
+//  },[])
+
   const handleAdd = () => {
     alert("You submit successfully")
-      axios.post(`${URL}/upscore`, {
-        user_id: data.user_id,
+      axios.post(`${URL}/upscore/${data.user_id}`, {
         organizational_up: Organization, 
         techical_up: Technology,
         idea_up: Idea,
         communication_up: Communication,
         product_up: Product,
-        organizational_skill: owner.stats.organizational_skill,
-        techical_skill: owner.stats.techical_skill,
-        idea_contribution: owner.stats.idea_contribution,
-        communication_skill: owner.stats.communication_skill,
-        product_optimization: owner.stats.product_optimization
+        // organizational_skill: owner.stats.organizational_skill,
+        // techical_skill: owner.stats.techical_skill,
+        // idea_contribution: owner.stats.idea_contribution,
+        // communication_skill: owner.stats.communication_skill,
+        // product_optimization: owner.stats.product_optimization
       })
       .then(result=> {
         if(result){
@@ -60,33 +55,13 @@ const Checkdone_modal = (data) => {
       })
       .catch(err => console.log(err))
 
-      axios.post(`${URL}/updone`, {task_id: data.task_id})
+      axios.post(`${URL}/updone/${data.task_id}`)
        .then(result=> {
          if(result){
            location.reload()
          }
        })
        .catch(err => console.log(err))
-
-       axios.post(`${URL}/uprank`, {
-        user_id: data.user_id,
-        organizational_up: Organization, 
-        techical_up: Technology,
-        idea_up: Idea,
-        communication_up: Communication,
-        product_up: Product,
-        organizational_skill: owner.stats.organizational_skill,
-        techical_skill: owner.stats.techical_skill,
-        idea_contribution: owner.stats.idea_contribution,
-        communication_skill: owner.stats.communication_skill,
-        product_optimization: owner.stats.product_optimization
-      })
-      .then(result=> {
-        if(result){
-          location.reload()
-        }
-      })
-      .catch(err => console.log(err))
   }
   const total = parseInt(Organization) + parseInt(Technology) + parseInt(Idea) + parseInt(Communication) + parseInt(Product);
 

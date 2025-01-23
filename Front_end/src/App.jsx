@@ -1,4 +1,3 @@
-import react from 'react'
 import './App.css'
 // import LoginForm from './components/Login/Login'
 // import Home from './Home'
