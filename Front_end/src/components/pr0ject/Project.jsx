@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import "./Project.css"
 import { } from 'react-icons/bs'
 import { IoSearchSharp } from "react-icons/io5";
@@ -26,9 +26,8 @@ const Project = () => {
   const auth1 = JSON.parse(auth);
 
   useEffect(() => {
-    axios.get(`${URL}/getprojects`) 
+    axios.get(`${URL}/project`) 
     .then(result => {
-      //console.log(result.data)
       setProjects(result.data)
     })
     .catch(err => console.log(err))
@@ -36,13 +35,12 @@ const Project = () => {
   
   const [owner, setOwner] = useState({});
   useEffect(() => {
-   axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
-   .then(result => {
-           setOwner(result.data)
-           //console.log(owner.stats)
-   })
-   .catch(err => console.log(err))
- },[])
+    axios.get(`${URL}/user/${auth1._id}`) 
+    .then(result => {
+        setOwner(result)
+    })
+    .catch(err => console.log(err))
+  },[])
 
   return (
     <div className='grid-container'>
@@ -53,7 +51,7 @@ const Project = () => {
         <div>
           {projects.map((project, index) =>
             <div key={index} className="view-project-btn">
-              {project.owner_id === owner.user_id ? 
+              {project.owner_id === owner._id ? 
                 <div className="project-list">
                   <div className='task-name'>
                     <h1 className="text">{project.name}</h1>

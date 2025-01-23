@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import './Profile.css'
 import Header from '../head/Header'
 import Sidebar from '../sidebar/Sidebar'
@@ -12,10 +12,9 @@ function Profile (){
   const auth1 = JSON.parse(auth);
   const [owner, setOwner] = useState({});
    useEffect(() => {
-    axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
+    axios.get(`${URL}/user/${auth1._id}`) 
     .then(result => {
-            setOwner(result.data)
-            console.log(owner.stats)
+        setOwner(result)
     })
     .catch(err => console.log(err))
   },[])
@@ -43,7 +42,7 @@ function Profile (){
                   <p>Role/Dept : {owner.role}</p>
                 </div>
                 <div className="user_id">
-                  <p>User ID : {owner.user_id}</p>
+                  <p>User ID : {owner._id}</p>
                 </div>
                 <div className='process'>
                   <p>Rank : {owner.rank}</p>

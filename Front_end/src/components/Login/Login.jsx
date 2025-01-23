@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import './Login.css';
@@ -11,19 +11,18 @@ const LoginForm = () => {
   async function submit(e){
     e.preventDefault();
     try {
-      await axios.post(`${URL}/login`,{
+      await axios.post(`${URL}/user/login`,{
         user_id,password
       })
       .then(res => {
         if(res.status===200){
-          localStorage.setItem("user",JSON.stringify(res.data))
-          //localStorage.u = res.data
+          localStorage.setItem("user", JSON.stringify(res))
           history("/profile")
         }
-        else if(res.status==202){
+        else if(res.status==401){
           alert("Wrong password");
         }
-        else if(res.status===204){
+        else if(res.status===404){
           alert("Not exist");
         }
       })
@@ -48,12 +47,6 @@ const LoginForm = () => {
           <div className="input-box">
             <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder='Passwork' required />
           </div>
-            {/* <div className='remember-forgot'>
-              <label>
-                <input type='checkbox'/> Remember me
-              </label>
-              <a href="#">Forgot password?</a>
-            </div> */}
           <div className='submit-btn'>
           <button type='submit' className='btn'>Login</button>
           </div>

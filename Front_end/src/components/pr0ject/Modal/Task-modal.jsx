@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import "./Task-modal.css";
 import { IoMdClose } from "react-icons/io";
 import axios from 'axios'
@@ -8,7 +7,6 @@ import Checkdone_modal from "./Checkdone-modal";
 import { MdCheckBox } from "react-icons/md"
 const URL = 'https://rpg-ranking-system.onrender.com';
 const Task_modal = (data) => {
-  const [checkIsDone, setCheckIsDone] = useState(false)
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);
   const [content, setContent] = useState();
@@ -26,14 +24,14 @@ const Task_modal = (data) => {
   }
 
   useEffect(() => {
-    axios.get(`${URL}/gettasks`) 
+    axios.get(`${URL}/task/`) 
     .then(result => {
-      setTasks(result.data)
+      setTasks(result)
     })
     .catch(err => console.log(err))
   }, [])
    const handleAdd = () => {
-     axios.post(`${URL}/addtask`, {content:content, rank:rank, Project_id: data.project_id, user_id:user_id})
+     axios.post(`${URL}/task/`, {content:content, rank:rank, Project_id: data.project_id, user_id:user_id})
      .then(result=> {
       setTask_id(result.data._id);
       if(result){
@@ -42,14 +40,14 @@ const Task_modal = (data) => {
      })
      .catch(err => console.log(err))
 
-     axios.post(`${URL}/addtaskid`, {user_id:user_id, task_id: task_id})
+     axios.post(`${URL}/user/${user_id}`, {task_id: task_id})
      .then(result=> {
        if(result){
          location.reload()
        }
      })
      .catch(err => console.log(err))
-     axios.post(`${URL}/pushtaskid`, {Project_id: data.project_id, task_id: task_id})
+     axios.post(`${URL}/project/${data.project_id}`, {task_id: task_id})
      .then(result=> {
        if(result){
          location.reload()
@@ -65,7 +63,7 @@ const Task_modal = (data) => {
       </button>
       {tasks.map((task, index) => (
         task.Project_id === data.project_id &&
-        <div className="task-project-component">
+        <div key={task._id} className="task-project-component">
           <div key={index} className="btn1">
             <div className="content-and-desc">
               <p className="check">{task.content}</p>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 const URL = 'https://rpg-ranking-system.onrender.com';
 import {
@@ -24,14 +25,13 @@ ChartJs.register(
 
 
 const Radar_rank = (props) => {
-    const auth = localStorage.getItem("user");
+const auth = localStorage.getItem("user");
 const auth1 = JSON.parse(auth);
 const [owner, setOwner] = useState({});
 useEffect(() => {
- axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
+axios.get(`${URL}/user/${auth1._id}`) 
  .then(result => {
-         setOwner(result.data)
-         console.log(owner.stats)
+    setOwner(result)
  })
  .catch(err => console.log(err))
 },[])
@@ -84,5 +84,12 @@ useEffect(() => {
     return <Radar data={data} options={options} height={500} width={600} />
 
 }
+Radar_rank.propTypes = {
+    organizational_skill: PropTypes.number.isRequired,
+    techical_skill: PropTypes.number.isRequired,
+    idea_contribution: PropTypes.number.isRequired,
+    communication_skill: PropTypes.number.isRequired,
+    product_optimization: PropTypes.number.isRequired,
+};
 
-export default Radar_rank
+export default Radar_rank;

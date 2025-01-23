@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import {  useState, useEffect } from 'react';
 import "./Modal-rank.css";
 import Radar_rank from "./chart/Radar-rank";
 import axios from "axios";
@@ -16,10 +16,9 @@ const Modal_rank = (data) => {
   const auth1 = JSON.parse(auth);
   const [owner, setOwner] = useState({});
   useEffect(() => {
-   axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
+   axios.get(`${URL}/user/${auth1._id}`) 
    .then(result => {
-           setOwner(result.data)
-           console.log(owner.stats)
+        setOwner(result)
    })
    .catch(err => console.log(err))
  },[])
@@ -31,7 +30,7 @@ const Modal_rank = (data) => {
 
   return (
     <>
-      <button onClick={owner.user_id===data.user_id ? compa :toggleModal} className="btn-click">
+      <button onClick={owner._id===data._id ? compa :toggleModal} className="btn-click">
         View Details
         </button>
       {modal && (

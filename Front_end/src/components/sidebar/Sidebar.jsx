@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'  
+import { useEffect, useState } from 'react'  
 import { BsFillPersonFill, BsListTask, BsClipboard2Pulse, BsFillArchiveFill } from 'react-icons/bs'
 import logo from "../../assets/images.png";
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import axios from 'axios'
+import PropTypes from 'prop-types';
 
 
 const URL = 'https://rpg-ranking-system.onrender.com';
@@ -15,10 +16,9 @@ function Sidebar({openSidebarToggle}) {
         alert("Your rank is not enough")
     };
     useEffect(() => {
-        axios.post(`${URL}/get`, {user_id: auth1.user_id}) 
+        axios.get(`${URL}/user/${auth1._id}`) 
         .then(result => {
-                setOwner(result.data)
-                //console.log(owner.stats)
+             setOwner(result)
         })
         .catch(err => console.log(err))
       },[])
@@ -76,5 +76,8 @@ function Sidebar({openSidebarToggle}) {
     </aside>
   )
 }
+Sidebar.propTypes = {
+    openSidebarToggle: PropTypes.bool.isRequired,
+};
 
 export default Sidebar
