@@ -6,7 +6,7 @@ import Sidebar from '../sidebar/Sidebar'
 import Modal_rank from './Modal/Modal-rank';
 
 
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 const Ranking = () => {
 
 

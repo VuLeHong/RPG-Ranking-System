@@ -10,7 +10,7 @@ import {
 } from "chart.js"
 import { Radar } from "react-chartjs-2"
 import axios from 'axios';
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 ChartJs.register(
 	RadialLinearScale,
 	PointElement,

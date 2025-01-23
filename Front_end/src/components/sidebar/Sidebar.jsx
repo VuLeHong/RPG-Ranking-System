@@ -7,7 +7,7 @@ import axios from 'axios'
 import PropTypes from 'prop-types';
 
 
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 function Sidebar({openSidebarToggle}) {
     const auth = localStorage.getItem("user");
     const auth1 = JSON.parse(auth);

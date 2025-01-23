@@ -7,7 +7,7 @@ import Header from '../head/Header';
 import axios from 'axios' 
 import Modal from './Modal/Modal';
 import Task_modal from './Modal/Task-modal';
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 const Project = () => {
 
   const [projects, setProjects] = useState([]);

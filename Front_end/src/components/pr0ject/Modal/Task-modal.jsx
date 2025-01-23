@@ -5,7 +5,7 @@ import axios from 'axios'
 import Checkdone_modal from "./Checkdone-modal";
 
 import { MdCheckBox } from "react-icons/md"
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 const Task_modal = (data) => {
   const [tasks, setTasks] = useState([]);
   const [modal, setModal] = useState(false);

@@ -3,7 +3,7 @@ import "./Modal-rank.css";
 import Radar_rank from "./chart/Radar-rank";
 import axios from "axios";
 
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 const Modal_rank = (data) => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {

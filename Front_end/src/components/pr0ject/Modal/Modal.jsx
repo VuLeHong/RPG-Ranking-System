@@ -3,7 +3,7 @@ import "./Modal.css";
 import axios from 'axios'
 import { IoMdClose } from "react-icons/io";
 import { TiPlus } from "react-icons/ti";
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 
 
 

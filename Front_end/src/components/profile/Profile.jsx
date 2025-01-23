@@ -4,7 +4,7 @@ import Header from '../head/Header'
 import Sidebar from '../sidebar/Sidebar'
 import axios from 'axios'
 import Radars from './chart/Radars'
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 function Profile (){
   
   const avatar = "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-541.jpg?size=338&ext=jpg&ga=GA1.1.735520172.1711411200&semt=ais";

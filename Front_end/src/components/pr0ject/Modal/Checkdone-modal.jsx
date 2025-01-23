@@ -2,7 +2,7 @@
 import  { useState } from 'react' 
 import "./Checkdone-modal.css";
 import axios from 'axios'
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 const Checkdone_modal = (data) => {
   const [modal, setModal] = useState(false);
   const [Organization, setOrganization] = useState();

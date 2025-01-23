@@ -6,7 +6,7 @@ import Sidebar from '../sidebar/Sidebar'
 import axios from 'axios' 
 import { FaCloudUploadAlt } from "react-icons/fa";
 
-const URL = 'https://rpg-ranking-system.onrender.com';
+const URL = 'https://human-resource-management-website.onrender.com';
 
 function Task() {
     const [tasks, setTasks] = useState([]);
