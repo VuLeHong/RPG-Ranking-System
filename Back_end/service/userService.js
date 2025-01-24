@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const login = async (user_id, password) => {
     try {
-        const user = await userCollection.findOne({ user_id: string(user_id) });
+        const user = await userCollection.findOne({ user_id: String(user_id) });
 
         if (!user) {
             return { status: 404, message: "User not found" };
@@ -32,7 +32,7 @@ const getAllUsers = async () => {
 
 const getUser = async (id) => {
     try {
-        const user = await userCollection.findOne({ user_id: string(id) });
+        const user = await userCollection.findOne({ user_id: String(id) });
         return { status: 200, data: user };
     } catch (error) {
         throw new Error(error.message);
@@ -49,7 +49,7 @@ const upScore = async (id, statUpdates) => {
             "stats.product_optimization": Number(statUpdates.product_up) ?? 0
         };
         const user = await userCollection.findOneAndUpdate(
-            { user_id: string(id) },
+            { user_id: String(id) },
             { $inc: updateValues }, 
             { new: true } 
         );
@@ -95,7 +95,7 @@ const createUser = async (userData) => {
 const addTask = async (id, task_id) => {
     try {
         const user = await userCollection.findOneAndUpdate(
-            { user_id: string(id) }, 
+            { user_id: String(id) }, 
             { $push: { tasks: task_id } }, 
             { new: true }
         );
