@@ -14,8 +14,8 @@ function Profile (){
    useEffect(() => {
     axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
-        console.log(result)
-        setOwner(result)
+        setOwner(result.data)
+        console.log(result.data)
     })
     .catch(err => console.log(err))
   },[])

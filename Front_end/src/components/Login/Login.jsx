@@ -16,7 +16,7 @@ const LoginForm = () => {
       })
       .then(res => {
         if(res.status===200){
-          localStorage.setItem("user", JSON.stringify(res))
+          localStorage.setItem("user", JSON.stringify(res.data))
           history("/profile")
         }
         else if(res.status==401){
