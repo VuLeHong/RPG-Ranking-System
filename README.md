@@ -20,7 +20,7 @@ This is a web application built for managing tasks, user profiles, project detai
 ## Screenshots
 
 ### Login Page
-![Login Page](https://drive.google.com/file/d/1jwWJpt6z32qUqNTsP2_u5kAcRIh_P-vE/view?usp=drive_link)
+![Login Page](https://drive.google.com/uc?id=1jwWJpt6z32qUqNTsP2_u5kAcRIh_P-vE)
 
 ### Profile Page
 ![Profile Page](https://drive.google.com/file/d/1MW1gQyUkNaCnzhMt6lrBYfoWfKGvRc5m/view?usp=drive_link)
