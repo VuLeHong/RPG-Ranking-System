@@ -21,7 +21,7 @@ const createTask = async (req, res) => {
 };
 
 const upDone = async (req, res) => {
-    const id = req.params;
+    const { id } = req.params;
     try {
         const result = await taskService.upDone(id);
         res.status(result.status).json(result.data || { message: result.message });
@@ -32,7 +32,7 @@ const upDone = async (req, res) => {
 
 const updateTask = async (req, res) => {
     const data = req.body;
-    const id = req.params; 
+    const { id } = req.params; 
     try {
         const result = await taskService.updateTask(id, data);
         res.status(result.status).json(result.data || { message: result.message });

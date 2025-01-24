@@ -22,7 +22,7 @@ const createProject = async (req, res) => {
 
 const addTask = async (req, res) => {
     const task_id = req.body;
-    const id = req.params;
+    const { id } = req.params;
     try {
         const result = await projectService.addTask(id, task_id);
         res.status(result.status).json(result.data || { message: result.message });

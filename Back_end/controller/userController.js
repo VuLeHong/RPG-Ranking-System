@@ -22,7 +22,7 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-    const  id  = req.params;
+    const  { id }  = req.params;
 
     try {
         const result = await userService.getUser(id);
@@ -33,7 +33,7 @@ const getUser = async (req, res) => {
 };
 
 const upScore = async (req, res) => {
-    const  id  = req.params;
+    const  { id }  = req.params;
     const {  organizational_up: organizational_up, 
         techical_up: techical_up,
         idea_up: idea_up,
@@ -63,7 +63,7 @@ const createUser = async (req, res) => {
 };
 
 const addTask = async (req, res) => {
-    const  id  = req.params;
+    const  { id }  = req.params;
     const   task_id  = req.body;
 
     try {
