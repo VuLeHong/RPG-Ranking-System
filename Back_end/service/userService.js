@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const login = async (user_id, password) => {
     try {
-        const user = await userCollection.findOne({ user_id: user_id });
+        const user = await userCollection.findOne({ user_id: string(user_id) });
 
         if (!user) {
             return { status: 404, message: "User not found" };
@@ -32,7 +32,7 @@ const getAllUsers = async () => {
 
 const getUser = async (id) => {
     try {
-        const user = await userCollection.findOne({ user_id: id });
+        const user = await userCollection.findOne({ user_id: string(id) });
         return { status: 200, data: user };
     } catch (error) {
         throw new Error(error.message);
@@ -49,7 +49,7 @@ const upScore = async (id, statUpdates) => {
             "stats.product_optimization": Number(statUpdates.product_up) ?? 0
         };
         const user = await userCollection.findOneAndUpdate(
-            { user_id: id },
+            { user_id: string(id) },
             { $inc: updateValues }, 
             { new: true } 
         );
@@ -82,7 +82,6 @@ const upScore = async (id, statUpdates) => {
 
 const createUser = async (userData) => {
     try {
-        console.log(userData);
         const saltRounds = 10;
         userData.password = await bcrypt.hash(userData.password, saltRounds);
         const user = await userCollection.create(userData);
@@ -96,7 +95,7 @@ const createUser = async (userData) => {
 const addTask = async (id, task_id) => {
     try {
         const user = await userCollection.findOneAndUpdate(
-            { user_id: id }, 
+            { user_id: string(id) }, 
             { $push: { tasks: task_id } }, 
             { new: true }
         );
