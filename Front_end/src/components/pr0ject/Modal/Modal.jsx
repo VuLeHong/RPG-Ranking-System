@@ -22,11 +22,13 @@ const Modal = () => {
   } else {
     document.body.classList.remove('active-modal')
   }
-
-  const handleAdd = () => {
+  
+  const handleAdd = (e) => {
+    e.preventDefault();
     axios.post(`${URL}/project/`, {owner_id:auth1.user_id, name: name, desc: Desc})
     .then( result=> {
       if(result){
+        
         location.reload()
       }
     })
@@ -57,7 +59,7 @@ const Modal = () => {
                 </div>
                 <div className="desc-project">
                     <label className="text-label" htmlFor="">Description :</label>
-                    <input className="Desc-table" type="text" placeholder=" Desciption..." onChange={ (e) => setDesc(e.target.value)} required />
+                    <input className="Desc-table" type="text" placeholder=" Desciption..." onChange={ (e) => setDesc(e.target.value)} />
                 </div>
                 <div className="create-project">
                     <button className="create-project1" type="submit">Create project</button>

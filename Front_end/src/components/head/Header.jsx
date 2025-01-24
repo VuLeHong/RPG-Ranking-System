@@ -9,11 +9,7 @@ function Header() {
   return (
     <header className='header'>
         <div className='header-right'>
-            
-              <button className='logout'>
-              <Link to='/'><a onClick={logout}>Logout</a></Link>
-              </button>
-            
+          <Link to='/' className='logout' onClick={logout}>Logout</Link>
         </div>
     </header>
   )

@@ -67,7 +67,7 @@ const addTask = async (req, res) => {
     const   task_id  = req.body;
 
     try {
-        const result = await userService.addTask(user_id, task_id);
+        const result = await userService.addTask(id, task_id);
         res.status(result.status).json(result.data || { message: result.message });
     } catch (error) {
         res.status(500).json({ message: error.message });

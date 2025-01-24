@@ -30,11 +30,12 @@ const Task_modal = (data) => {
     })
     .catch(err => console.log(err))
   }, [])
-   const handleAdd = () => {
+   const handleAdd = (e) => {
+    e.preventDefault();
      axios.post(`${URL}/task/`, {content:content, rank:rank, Project_id: data.project_id, user_id:user_id})
      .then(result=> {
-      setTask_id(result.data._id);
       if(result){
+        setTask_id(result.data._id);
          location.reload()
        }
      })

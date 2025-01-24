@@ -32,7 +32,6 @@ const Project = () => {
     })
     .catch(err => console.log(err))
   }, [])
-  
   const [owner, setOwner] = useState({});
   useEffect(() => {
     axios.get(`${URL}/user/${auth1.user_id}`) 

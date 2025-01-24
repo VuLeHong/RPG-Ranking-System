@@ -32,44 +32,26 @@ function Sidebar() {
 
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
-                <a href=''>
                     <Link className='component-icon-list' to='/profile'><BsFillPersonFill className='icon'/> <p>Profile</p></Link>
-                </a>
             </li>
             <li className='sidebar-list-item'>
-                <a href=''>
                 <Link className='component-icon-list' to='/task'><BsListTask className='icon'/> <p>Tasks</p></Link>
-
-                </a>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
                     <Link className='component-icon-list' to='/ranking'><BsClipboard2Pulse className='icon'/> <p>Ranking</p></Link>
-                </a>
             </li>
             <li className='sidebar-list-item'>
-                    {owner.rank === 'E'
-                    ?
-                    <a href="" className='notify' onClick={notify}>
-                        <Link className='component-icon-list'><BsFillArchiveFill className='icon'/> <p>Project</p> </Link>
-                    </a>
-                    :
-                    owner.rank === 'D'
-                    ?
-                    <a href="" className='notify' onClick={notify}>
-                        <Link className='component-icon-list'><BsFillArchiveFill className='icon'/> <p>Project</p> </Link>
-                    </a>
-                    :
-                    owner.rank === 'C'
-                    ?
-                    <a href="" className='notify' onClick={notify}>
-                        <Link className='component-icon-list'><BsFillArchiveFill className='icon'/> <p>Project</p> </Link>
-                    </a>
-                    :
-                        <a href="">
-                            <Link className='component-icon-list' to='/project'><BsFillArchiveFill className='icon'/> <p>Project</p> </Link>
-                        </a>
-                    }
+                {owner.rank === 'E' || owner.rank === 'D' || owner.rank === 'C' ? (
+                    <Link className='component-icon-list notify' onClick={notify}>
+                    <BsFillArchiveFill className='icon'/> 
+                    <p>Project</p> 
+                    </Link>
+                ) : (
+                    <Link className='component-icon-list' to='/project'>
+                    <BsFillArchiveFill className='icon'/> 
+                    <p>Project</p> 
+                    </Link>
+                )}
             </li>
         </ul>
     </aside>
