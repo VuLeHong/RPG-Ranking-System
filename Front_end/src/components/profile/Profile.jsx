@@ -15,7 +15,6 @@ function Profile (){
     axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
         setOwner(result.data)
-        console.log(result.data)
     })
     .catch(err => console.log(err))
   },[])

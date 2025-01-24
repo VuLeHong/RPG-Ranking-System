@@ -28,7 +28,7 @@ const Project = () => {
   useEffect(() => {
     axios.get(`${URL}/project`) 
     .then(result => {
-      setProjects(result)
+      setProjects(result.data)
     })
     .catch(err => console.log(err))
   }, [])
@@ -37,7 +37,7 @@ const Project = () => {
   useEffect(() => {
     axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
-        setOwner(result)
+        setOwner(result.data)
     })
     .catch(err => console.log(err))
   },[])

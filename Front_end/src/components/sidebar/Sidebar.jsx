@@ -4,11 +4,10 @@ import logo from "../../assets/images.png";
 import { Link } from 'react-router-dom';
 import './Sidebar.css';
 import axios from 'axios'
-import PropTypes from 'prop-types';
 
 
 const URL = 'https://human-resource-management-website.onrender.com';
-function Sidebar({openSidebarToggle}) {
+function Sidebar() {
     const auth = localStorage.getItem("user");
     const auth1 = JSON.parse(auth);
     const [owner, setOwner] = useState({});
@@ -18,13 +17,13 @@ function Sidebar({openSidebarToggle}) {
     useEffect(() => {
         axios.get(`${URL}/user/${auth1.user_id}`) 
         .then(result => {
-             setOwner(result)
+             setOwner(result.data)
         })
         .catch(err => console.log(err))
       },[])
 
   return (
-    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
+    <aside id="sidebar" className="sidebar-responsive">
         <div className='sidebar-title'>
             <div className='sidebar-brand'>
                 <img src={logo} />
@@ -76,8 +75,6 @@ function Sidebar({openSidebarToggle}) {
     </aside>
   )
 }
-Sidebar.propTypes = {
-    openSidebarToggle: PropTypes.bool.isRequired,
-};
+
 
 export default Sidebar

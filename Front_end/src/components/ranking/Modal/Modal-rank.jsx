@@ -18,7 +18,7 @@ const Modal_rank = (data) => {
   useEffect(() => {
    axios.get(`${URL}/user/${auth1.user_id}`) 
    .then(result => {
-        setOwner(result)
+        setOwner(result.data)
    })
    .catch(err => console.log(err))
  },[])

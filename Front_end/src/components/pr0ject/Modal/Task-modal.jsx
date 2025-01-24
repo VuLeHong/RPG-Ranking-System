@@ -26,7 +26,7 @@ const Task_modal = (data) => {
   useEffect(() => {
     axios.get(`${URL}/task/`) 
     .then(result => {
-      setTasks(result)
+      setTasks(result.data)
     })
     .catch(err => console.log(err))
   }, [])

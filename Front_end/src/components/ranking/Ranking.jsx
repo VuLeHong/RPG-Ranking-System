@@ -15,7 +15,7 @@ const Ranking = () => {
   const getUsers = async () => {
     try {
       const response = await axios.get(`${URL}/user/`);
-      setUsers(response);
+      setUsers(response.data);
     } catch (error) {
       console.error(error.message);
     }
@@ -29,7 +29,7 @@ const Ranking = () => {
   useEffect(() => {
    axios.get(`${URL}/user/${auth1.user_id}`) 
    .then(result => {
-           setOwner(result)
+           setOwner(result.data)
    })
    .catch(err => console.log(err))
  },[])

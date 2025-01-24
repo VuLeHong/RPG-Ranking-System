@@ -37,7 +37,7 @@ function Task() {
     useEffect(() => {
       axios.get(`${URL}/task/`) 
       .then(result => {
-        setTasks(result)        
+        setTasks(result.data)        
       })
       .catch(err => console.log(err))
     }, [])
@@ -64,7 +64,7 @@ function Task() {
   useEffect(() => {
     axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
-         setOwner(result)
+         setOwner(result.data)
     })
     .catch(err => console.log(err))
   },[])

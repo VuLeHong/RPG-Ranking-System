@@ -29,7 +29,7 @@ const Checkdone_modal = (data) => {
 //   useEffect(() => {
 //    axios.get(`${URL}/user/${data.user_id}`) 
 //    .then(result => {
-//         setOwner(result)
+//         setOwner(result.data)
 //    })
 //    .catch(err => console.log(err))
 //  },[])
