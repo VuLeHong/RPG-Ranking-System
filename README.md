@@ -23,25 +23,25 @@ This is a web application built for managing tasks, user profiles, project detai
 ![Login Page](https://drive.google.com/uc?id=1jwWJpt6z32qUqNTsP2_u5kAcRIh_P-vE)
 
 ### Profile Page
-![Profile Page](https://drive.google.com/file/d/1MW1gQyUkNaCnzhMt6lrBYfoWfKGvRc5m/view?usp=drive_link)
+![Profile Page](https://drive.google.com/uc?id=1MW1gQyUkNaCnzhMt6lrBYfoWfKGvRc5m)
 
 ### Task Management Page
-![Task Management Page](https://drive.google.com/file/d/1fhMSUkTdNXbLKgVo7ZvPuE1T-DaHrSVj/view?usp=drive_link)
+![Task Management Page](https://drive.google.com/uc?id=1fhMSUkTdNXbLKgVo7ZvPuE1T-DaHrSVj)
 
 ### Ranking Page
-![Ranking Page](https://drive.google.com/file/d/1g-prW0HX7Mlf0JErmzFvXqxLMEd4riIT/view?usp=drive_link)
+![Ranking Page](https://drive.google.com/uc?id=1g-prW0HX7Mlf0JErmzFvXqxLMEd4riIT)
 
 ### Compare System in Ranking
-![Compare System in Ranking](https://drive.google.com/file/d/1P7razJrS_-7j6s1tqGaplviHSMA7TlKr/view?usp=drive_link)
+![Compare System in Ranking](https://drive.google.com/uc?id=1P7razJrS_-7j6s1tqGaplviHSMA7TlKr)
 
 ### Project Management Page
-![Project Management Page](https://drive.google.com/file/d/1arONs1DK5K02kpiWQq18_b5o4QSXu9JD/view?usp=drive_link)
+![Project Management Page](https://drive.google.com/uc?id=1arONs1DK5K02kpiWQq18_b5o4QSXu9JD)
 
 ### Project Create Modal
-![Project Detail](https://drive.google.com/file/d/1fEk4YOU2B0KsvqQM9ZHK0V8ISqVqb2Fw/view?usp=drive_link)
+![Project Detail](https://drive.google.com/uc?id=1fEk4YOU2B0KsvqQM9ZHK0V8ISqVqb2Fw)
 
 ### Task Create Modal
-![Project Detail](https://drive.google.com/file/d/1fEk4YOU2B0KsvqQM9ZHK0V8ISqVqb2Fw/view?usp=drive_link)
+![Project Detail](https://drive.google.com/uc?id=1fEk4YOU2B0KsvqQM9ZHK0V8ISqVqb2Fw)
 
 
 
