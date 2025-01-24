@@ -27,7 +27,7 @@ const Ranking = () => {
 
   const [owner, setOwner] = useState({});
   useEffect(() => {
-   axios.get(`${URL}/user/${auth1._id}`) 
+   axios.get(`${URL}/user/${auth1.user_id}`) 
    .then(result => {
            setOwner(result)
    })
@@ -74,9 +74,9 @@ const Ranking = () => {
           <h1>Hello {owner.truename}, here is your total stats!</h1>
         </div>
         {rankedArr.map(user =>(
-          user._id == owner._id 
+          user.user_id == owner.user_id 
           ?
-          <div className="rank" key={user._id}>
+          <div className="rank" key={user.user_id}>
             <div className="rank-number">
               <h1>{user.rank}</h1>
             </div>

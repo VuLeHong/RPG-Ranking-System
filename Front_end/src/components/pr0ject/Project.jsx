@@ -28,14 +28,14 @@ const Project = () => {
   useEffect(() => {
     axios.get(`${URL}/project`) 
     .then(result => {
-      setProjects(result.data)
+      setProjects(result)
     })
     .catch(err => console.log(err))
   }, [])
   
   const [owner, setOwner] = useState({});
   useEffect(() => {
-    axios.get(`${URL}/user/${auth1._id}`) 
+    axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
         setOwner(result)
     })
@@ -51,7 +51,7 @@ const Project = () => {
         <div>
           {projects.map((project, index) =>
             <div key={index} className="view-project-btn">
-              {project.owner_id === owner._id ? 
+              {project.owner_id === owner.user_id ? 
                 <div className="project-list">
                   <div className='task-name'>
                     <h1 className="text">{project.name}</h1>

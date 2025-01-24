@@ -12,8 +12,9 @@ function Profile (){
   const auth1 = JSON.parse(auth);
   const [owner, setOwner] = useState({});
    useEffect(() => {
-    axios.get(`${URL}/user/${auth1._id}`) 
+    axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
+        console.log(result)
         setOwner(result)
     })
     .catch(err => console.log(err))
@@ -42,7 +43,7 @@ function Profile (){
                   <p>Role/Dept : {owner.role}</p>
                 </div>
                 <div className="user_id">
-                  <p>User ID : {owner._id}</p>
+                  <p>User ID : {owner.user_id}</p>
                 </div>
                 <div className='process'>
                   <p>Rank : {owner.rank}</p>

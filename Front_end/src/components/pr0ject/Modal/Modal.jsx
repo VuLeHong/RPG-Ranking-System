@@ -24,7 +24,7 @@ const Modal = () => {
   }
 
   const handleAdd = () => {
-    axios.post(`${URL}/project/`, {owner_id:auth1._id, name: name, desc: Desc})
+    axios.post(`${URL}/project/`, {owner_id:auth1.user_id, name: name, desc: Desc})
     .then( result=> {
       if(result){
         location.reload()

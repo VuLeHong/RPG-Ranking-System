@@ -62,7 +62,7 @@ function Task() {
 }
   const [owner, setOwner] = useState({});
   useEffect(() => {
-    axios.get(`${URL}/user/${auth1._id}`) 
+    axios.get(`${URL}/user/${auth1.user_id}`) 
     .then(result => {
          setOwner(result)
     })

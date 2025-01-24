@@ -16,7 +16,7 @@ function Sidebar({openSidebarToggle}) {
         alert("Your rank is not enough")
     };
     useEffect(() => {
-        axios.get(`${URL}/user/${auth1._id}`) 
+        axios.get(`${URL}/user/${auth1.user_id}`) 
         .then(result => {
              setOwner(result)
         })

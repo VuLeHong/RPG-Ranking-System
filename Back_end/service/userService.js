@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const login = async (user_id, password) => {
     try {
-        const user = await userCollection.findOne({ _id: new mongoose.Types.ObjectId(user_id) });
+        const user = await userCollection.findOne({ user_id: user_id });
 
         if (!user) {
             return { status: 404, message: "User not found" };
@@ -30,16 +30,16 @@ const getAllUsers = async () => {
     }
 };
 
-const getUser = async (id) => {
+const getUser = async (user_id) => {
     try {
-        const user = await userCollection.findOne({ _id: new mongoose.Types.ObjectId(id)  });
+        const user = await userCollection.findOne({ user_id: user_id });
         return { status: 200, data: user };
     } catch (error) {
         throw new Error(error.message);
     }
 };
 
-const upScore = async (id, statUpdates) => {
+const upScore = async (user_id, statUpdates) => {
     try {
         const updateValues = {
             "stats.organizational_skill": Number(statUpdates.organizational_up) ?? 0,
@@ -49,7 +49,7 @@ const upScore = async (id, statUpdates) => {
             "stats.product_optimization": Number(statUpdates.product_up) ?? 0
         };
         const user = await userCollection.findOneAndUpdate(
-            { _id: new mongoose.Types.ObjectId(id) },
+            { user_id: user_id },
             { $inc: updateValues }, 
             { new: true } 
         );
@@ -93,10 +93,10 @@ const createUser = async (userData) => {
     }
 };
 
-const addTask = async (id, task_id) => {
+const addTask = async (user_id, task_id) => {
     try {
         const user = await userCollection.findOneAndUpdate(
-            { _id: new mongoose.Types.ObjectId(id) }, 
+            { user_id: user_id }, 
             { $push: { tasks: task_id } }, 
             { new: true }
         );

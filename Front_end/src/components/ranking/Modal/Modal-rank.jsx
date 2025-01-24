@@ -16,7 +16,7 @@ const Modal_rank = (data) => {
   const auth1 = JSON.parse(auth);
   const [owner, setOwner] = useState({});
   useEffect(() => {
-   axios.get(`${URL}/user/${auth1._id}`) 
+   axios.get(`${URL}/user/${auth1.user_id}`) 
    .then(result => {
         setOwner(result)
    })
@@ -30,7 +30,7 @@ const Modal_rank = (data) => {
 
   return (
     <>
-      <button onClick={owner._id===data._id ? compa :toggleModal} className="btn-click">
+      <button onClick={owner.user_id===data._id ? compa :toggleModal} className="btn-click">
         View Details
         </button>
       {modal && (
